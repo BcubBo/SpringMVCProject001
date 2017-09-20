@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SpringMVCDEMO</title>
 </head>
-<body>
+<body style="background-color:grey">
 <h1><strong style="color:yellowgreen">welcome SpringMVC</strong></h1>
+<h1><strong style="color:yellowgreen">${username}</strong></h1>
 </body>
 </html>
