@@ -99,6 +99,23 @@ public class UserController {
 		return "user/update";
 		
 	}
+	//
+	@RequestMapping(value="/{id}/update",method=RequestMethod.POST)
+	public String updateSave(@PathVariable String id,@Validated User user,BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return "user/update";
+		}
+		userList.put(id, user);
+		return "redirect:/user/list";//只要在mvc中设置了映射，那就会通过servlet的检测来进行相应的跳转
+		
+	}
+	//删除方法
+	@RequestMapping(value="/{id}/delete",method=RequestMethod.GET)
+	public String delete(@PathVariable String id) {
+		userList.remove(id);
+		return "redirect:/user/list";
+	}
+	
 	
 	
 }

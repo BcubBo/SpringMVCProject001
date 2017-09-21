@@ -13,7 +13,10 @@
 	id:${userObjectMap.value.id }
 	<a href="view/${userObjectMap.value.id }" style="text-decoration: none;color:greenyellow">username:${userObjectMap.value.userName }</a>
 	password:${userObjectMap.value.password }
-	email:${userObjectMap.value.email }<br/>
+	email:${userObjectMap.value.email }<a href="${userObjectMap.value.id }/update" style="text-decoration: none">修改</a>
+	<a href="${userObjectMap.value.id }/delete" style="text-decoration: none">删除</a>
+	<br/>
+	
 <%-- 	id:${userObjectMap.value.id }
 	username:${userObjectMap.userName }
 	password:${userObjectMap.password }
