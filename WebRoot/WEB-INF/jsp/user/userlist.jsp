@@ -20,5 +20,7 @@
 	email:${userObjectMap.email }<br/> --%>	
 		
 </c:forEach></strong></h1>
+<a href="add">添加</a><br/>
+
 </body>
 </html>

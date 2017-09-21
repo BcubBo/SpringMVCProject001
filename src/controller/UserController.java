@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,10 +26,10 @@ public class UserController {
 	
 	public UserController() {
 		logger.info("初始化");
-		userList.put("userObject0",new User("0","bcubbo0","bcubbo0","email@email.com0"));
-		userList.put("userObject1",new User("1","bcubbo1","bcubbo1","email@email.com1"));
-		userList.put("userObject2",new User("2","bcubbo2","bcubbo2","email@email.com2"));
-		userList.put("userObject3",new User("3","bcubbo3","bcubbo3","email@email.com3"));
+		userList.put("0",new User("0","bcubbo0","bcubbo0","email@email.com0"));
+		userList.put("1",new User("1","bcubbo1","bcubbo1","email@email.com1"));
+		userList.put("2",new User("2","bcubbo2","bcubbo2","email@email.com2"));
+		userList.put("3",new User("3","bcubbo3","bcubbo3","email@email.com3"));
 		logger.info("初始化结束");
 		//数据存储
 		
@@ -40,7 +41,7 @@ public class UserController {
 		return "user/userlist";
 		
 	}
-	@RequestMapping(value="/userlist",method=RequestMethod.GET)
+	@RequestMapping(value="/userlist",method=RequestMethod.GET)//以list的方式进行的传递
 	public String list(HttpServletRequest request) {
 		//使用list方式进行值的传递
 		List<User> userList = new ArrayList<User>();
@@ -54,10 +55,29 @@ public class UserController {
 	//使用ModelandView进行传递
 	@RequestMapping(value="/list2",method=RequestMethod.GET)
 	public ModelAndView list() {
-		
+		logger.info("使用ModelAndView进行页面的跳转和值的传递");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("user/userlist");//和后缀配合进行页面的跳转
 		mv.addObject("userList",userList);
 		return mv;
 	}
+	//
+	@RequestMapping(value="/add",method=RequestMethod.GET)
+	public String add(@ModelAttribute("user")User user,String xx) {
+		//model.addAttribute(new User());
+		return "user/add";
+	}
+	@RequestMapping(value="/add",method=RequestMethod.POST)
+	public String add(User user) {
+		userList.put(user.getId(),user);
+		
+		//return "user/userlist";//服务器端行为
+		
+		return "redirect:/user/list2";//客户端重新发出请求,以Map的方式进行的传递
+	}
+	
+	
+	
+	
+	
 }
