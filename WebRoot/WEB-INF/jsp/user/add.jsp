@@ -9,11 +9,11 @@
 </head>
 <body>
 <!-- 不指定action，那么请求提交到add -->
-<sfm:form modelAttribute="user" method="post">
+<sfm:form modelAttribute="user" method="post" action="addsave">
 	ID:<sfm:input path="id"/><br/>
-	userName:<sfm:input path="userName"/><br/>
-	password:<sfm:input path="password"/><br/>
-	email:<sfm:input path="email"/><br/>
+	userName:<sfm:input path="userName"/><sfm:errors path="userName"/><br/>
+	password:<sfm:input path="password"/><sfm:errors path="password"/><br/>
+	email:<sfm:input path="email"/><br/><sfm:errors path="email"/>
 	<input type="submit" value="上传"/>
 </sfm:form>
 </body>

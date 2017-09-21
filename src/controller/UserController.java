@@ -10,7 +10,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,20 +66,31 @@ public class UserController {
 	}
 	//
 	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public String add(@ModelAttribute("user")User user,String xx) {
+	public String add(@ModelAttribute("user")User user) {
 		//model.addAttribute(new User());
 		return "user/add";
 	}
-	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public String add(User user) {
-		userList.put(user.getId(),user);
+	@RequestMapping(value="/addsave",method=RequestMethod.POST)
+	public String addSave(@Validated User user,BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return "user/add";
+		}else {
+			userList.put(user.getId(),user);
+			
+			//return "user/userlist";//服务器端行为
+			
+			return "redirect:/user/list2";//客户端重新发出请求,以Map的方式进行的传递
+		}
 		
-		//return "user/userlist";//服务器端行为
-		
-		return "redirect:/user/list2";//客户端重新发出请求,以Map的方式进行的传递
 	}
 	
-	
+	//REST风格
+	@RequestMapping(value="/view/{id}",method=RequestMethod.GET)
+	public String view(@PathVariable String id,Model model) {
+		model.addAttribute(userList.get(id));//放入的是对象，user对象/获取的为user对象
+		return "user/view";
+		
+	}
 	
 	
 	

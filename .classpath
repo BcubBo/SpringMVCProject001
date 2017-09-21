@@ -65,7 +65,7 @@
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-struts-3.2.9.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-test-3.2.9.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-tx-3.2.9.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-web-3.2.9.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-web-3.2.9.RELEASE.jar" sourcepath="WebRoot/WEB-INF/doc&amp;srcCode/spring-web-3.2.9.RELEASE-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-webmvc-3.2.9.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-webmvc-portlet-3.2.9.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/taglibs-standard-compat-1.2.5.jar"/>
@@ -73,5 +73,8 @@
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/taglibs-standard-jstlel-1.2.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/xwork-core-2.3.33.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/hibernate-validator-4.3.0.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/jboss-logging-3.1.0.GA.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/validation-api-1.1.0.Alpha1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
