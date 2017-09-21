@@ -9,20 +9,20 @@
 </head>
 <body style="background-color:grey">
 <h1><strong style="color:greenyellow">===用户列表查询===</strong></h1>
-<h1><strong style="color:greenyellow"><c:forEach items="${userList}" var="userObjectMap">
-	id:${userObjectMap.value.id }
-	<a href="view/${userObjectMap.value.id }" style="text-decoration: none;color:greenyellow">username:${userObjectMap.value.userName }</a>
-	password:${userObjectMap.value.password }
+<h2><strong style="color:greenyellow"><c:forEach items="${userList}" var="userObjectMap">
+	id:${userObjectMap.value.id }<br/>
+	<a href="view/${userObjectMap.value.id }" style="text-decoration: none;color:greenyellow">username:${userObjectMap.value.userName }</a><br/>
+	password:${userObjectMap.value.password }<br/>
 	email:${userObjectMap.value.email }<a href="${userObjectMap.value.id }/update" style="text-decoration: none">修改</a>
 	<a href="${userObjectMap.value.id }/delete" style="text-decoration: none">删除</a>
 	<br/>
-	
+	<hr/>
 <%-- 	id:${userObjectMap.value.id }
 	username:${userObjectMap.userName }
 	password:${userObjectMap.password }
 	email:${userObjectMap.email }<br/> --%>	
 		
-</c:forEach></strong></h1>
+</c:forEach></strong></h2>
 <a href="add">添加</a><br/>
 
 </body>

@@ -21,9 +21,9 @@
 <!-- 	<bean name="/welcome.html" class="controller.WelComeController"/> -->
 	<!-- 视图解析器 -->
 	
-	<!-- 使用注解分方式 -->
-	<context:component-scan base-package="controller"></context:component-scan>
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- 使用Annotation的方式完成controller的映射 -->
+	<context:component-scan base-package="controller"/>
+	<mvc:annotation-driven/>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
