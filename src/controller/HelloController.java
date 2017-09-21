@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +33,14 @@ public class HelloController {
 		
 		
 	}
-
+//使用Map进行视图和模型的传递
+	@RequestMapping(value="hello3.html")
+	public String hello(String username,Map<String,Object> model) {
+		
+		System.out.println("进入使用Map的方法中:"+username);
+		model.put("username",username);
+		return  "welcome";
+	}
+	
+	
 }
