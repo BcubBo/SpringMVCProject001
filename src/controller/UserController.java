@@ -91,7 +91,14 @@ public class UserController {
 		return "user/view";
 		
 	}
-	
+	//RESE风格进行数据的修改
+	@RequestMapping(value="/{id}/update",method=RequestMethod.GET)
+	public String udpate(@PathVariable String id,Model model) {
+		
+		model.addAttribute(userList.get(id));//将user对象放入model中
+		return "user/update";
+		
+	}
 	
 	
 }

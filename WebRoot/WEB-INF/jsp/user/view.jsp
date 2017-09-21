@@ -10,7 +10,7 @@
 <h3><strong style="color:greenyellow">
 =====查看用户id<br/>
 ID：${user.id }<br/>
-username:${user.username }<br/>
+username:${user.userName }<br/>
 password:${user.password }<br/>
 email:${user.email }<br/>
 

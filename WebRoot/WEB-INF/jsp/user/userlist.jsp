@@ -11,7 +11,7 @@
 <h1><strong style="color:greenyellow">===用户列表查询===</strong></h1>
 <h1><strong style="color:greenyellow"><c:forEach items="${userList}" var="userObjectMap">
 	id:${userObjectMap.value.id }
-	username:${userObjectMap.value.userName }
+	<a href="view/${userObjectMap.value.id }" style="text-decoration: none;color:greenyellow">username:${userObjectMap.value.userName }</a>
 	password:${userObjectMap.value.password }
 	email:${userObjectMap.value.email }<br/>
 <%-- 	id:${userObjectMap.value.id }
