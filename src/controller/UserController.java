@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import pojo.User;
 @Controller
@@ -19,6 +20,7 @@ import pojo.User;
 public class UserController {
 	
 	private Map<String,User> userList = new HashMap<String,User>();
+	//不建议在此写入成员变量应为为单例模式可能会造成多用户同数据的错误
 	Logger logger  = (Logger)LogManager.getLogger();
 	
 	public UserController() {
@@ -50,5 +52,12 @@ public class UserController {
 		return "user/userlist";
 	}
 	//使用ModelandView进行传递
-	@RequestMapping(value="/list2"
+	@RequestMapping(value="/list2",method=RequestMethod.GET)
+	public ModelAndView list() {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("user/userlist");//和后缀配合进行页面的跳转
+		mv.addObject("userList",userList);
+		return mv;
+	}
 }
