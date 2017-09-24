@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.codehaus.jackson.map.util.JSONPObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -107,6 +109,7 @@ public class UserController {
 		}
 		
 	}
+	//添加文件的上传功能
 	
 	//REST风格
 	@RequestMapping(value="/view/{id}",method=RequestMethod.GET)
@@ -171,7 +174,19 @@ public class UserController {
 		return "redirect:/user/list";
 		
 	}
-	//
+	//使用JSON
+	//params="json"的意思：访问view这个方法的时候，必须有一个参数json
+	@RequestMapping(value="/view/{id}/{json}",method=RequestMethod.GET,params="json")
+	@ResponseBody //ajax
+	public User view(@PathVariable String id) {
+		
+		//JSONObject jo =JSONObject.formObejct("String");
+		//User user = (User)JSONOBject.toBean(jo,User.class);
+		return userList.get(id);
+		//返回对象
+		
+	}
+	
 
 	
 }
