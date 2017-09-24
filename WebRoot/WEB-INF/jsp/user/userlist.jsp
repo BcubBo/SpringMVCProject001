@@ -8,6 +8,7 @@
 <title>用户列表展示</title>
 </head>
 <body style="background-color:grey">
+<div style="color:gold">当前用户为:${sessionScope.loginUser.userName }</div>
 <h1><strong style="color:greenyellow">===用户列表查询===</strong></h1>
 <h2><strong style="color:greenyellow"><c:forEach items="${userList}" var="userObjectMap">
 	id:${userObjectMap.value.id }<br/>

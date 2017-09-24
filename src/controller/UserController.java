@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -12,12 +13,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import exception.UserException;
 import pojo.User;
 @Controller
 @RequestMapping(value="/user")
@@ -115,7 +119,37 @@ public class UserController {
 		userList.remove(id);
 		return "redirect:/user/list";
 	}
+	//异常抛出和拦截
+	@ExceptionHandler(value= {UserException.class})//局部异常
+	public String handlerException(UserException e,HttpServletRequest request) {
+		request.setAttribute("e",e);
+		return "error";
+				
+	}
+	//登陆方法
 	
-	
+	@RequestMapping(value="/login",method=RequestMethod.POST)
+	public String login(@RequestParam String userName,@RequestParam String password,HttpSession session) {
+		
+		boolean flag = false;
+		
+		for(User user:userList.values()){
+			if(userName.equals(user.getUserName())&&password.equals(user.getPassword())){
+				
+				logger.info("登陆成功!");
+				session.setAttribute("loginUser",user);
+				flag = true;
+				break;
+				
+				
+			}
+		}
+		if(!flag) {
+			throw new UserException("用户名密码不正确请重新输入");
+		}
+		return "redirect:/user/list";
+		
+	}
+	//
 	
 }
