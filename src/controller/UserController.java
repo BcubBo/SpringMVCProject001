@@ -80,21 +80,24 @@ public class UserController {
 	}
 	@RequestMapping(value="/addsave",method=RequestMethod.POST)
 	public String addSave(@Validated User user,BindingResult bindingResult,
-			MultipartFile attach,HttpServletRequest request) {
-		
+			@RequestParam MultipartFile[] attachs,HttpServletRequest request) {
+		//多文件上传
 		String filePath  = request.getSession().getServletContext().getRealPath("/statics/upload");
 		//存在操作系统分隔符的问题
-		logger.info("上传附件后输出结果为:"+attach.getOriginalFilename()+"\t"+"标签名称为:"+attach.getName());
+		
 		if(bindingResult.hasErrors()) {
 			return "user/add";
 		}else {
 			userList.put(user.getId(),user);
-			if(!attach.isEmpty()) {
-				File saveFile = new File(filePath+File.separator+attach.getOriginalFilename());
-				try {
-					FileUtils.copyInputStreamToFile(attach.getInputStream(),saveFile);
-				} catch (IOException e) {
-					e.printStackTrace();
+			for(MultipartFile attach:attachs) {
+				logger.info("上传附件后输出结果为:"+attach.getOriginalFilename()+"\t"+"标签名称为:"+attach.getName());
+				if(!attach.isEmpty()) {
+					File saveFile = new File(filePath+File.separator+attach.getOriginalFilename());
+					try {
+						FileUtils.copyInputStreamToFile(attach.getInputStream(),saveFile);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 			

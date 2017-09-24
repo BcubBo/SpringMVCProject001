@@ -17,8 +17,12 @@
 	<tr><td>userName:</td><td><sfm:input path="userName" cssStyle="background-color:lightgrey"/></td><td><sfm:errors path="userName"/></td></tr>
 	<tr><td>password:</td><td><sfm:input path="password" cssStyle="background-color:lightgrey"/></td><td><sfm:errors path="password"/></td></tr>
 	<tr><td>email:</td><td><sfm:input path="email" cssStyle="background-color:lightgrey"/></td><td><sfm:errors path="email"/></td></tr>
-	<tr><td>attach:</td><td><input type="file" name="attach" /></td></tr>
+	<tr><td>attach:</td><td><input type="file" name="attachs" /></td></tr>
+	<tr><td>attach:</td><td><input type="file" name="attachs" /></td></tr>
+	<tr><td>attach:</td><td><input type="file" name="attachs" /></td></tr>
+	<tr><td>attach:</td><td><input type="file" name="attachs" /></td></tr>
 	<tr><td><input type="submit" value="上传"/></td></tr>
+	
 	
 </sfm:form>
 </table>
