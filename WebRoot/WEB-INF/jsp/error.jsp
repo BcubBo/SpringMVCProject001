@@ -15,7 +15,8 @@
 <title>错误！</title>
 </head>
 <body style="background-color:grey">
-<h3 style="color:gold">配置了全局异常之后,用户名或者密码错误！请重新登陆</h3>
+<h3 style="color:gold">${exception.message }</h3>
+<h3 style="color:gold">配置了全局异常之后</h3>
 <h3>将跳转到登陆界面</h3>
 </body>
 </html>
