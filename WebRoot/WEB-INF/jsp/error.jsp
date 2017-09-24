@@ -16,6 +16,7 @@
 </head>
 <body style="background-color:grey">
 <h3 style="color:gold">${e.message }</h3>
+<h3 style="color:gold">配置了全局异常之后</h3>
 <h3>将跳转到登陆界面</h3>
 </body>
 </html>

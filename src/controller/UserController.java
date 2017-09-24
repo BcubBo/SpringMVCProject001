@@ -119,7 +119,7 @@ public class UserController {
 		userList.remove(id);
 		return "redirect:/user/list";
 	}
-	//异常抛出和拦截
+/*	//异常抛出和拦截局部异常
 	@ExceptionHandler(value= {UserException.class})//局部异常
 	public String handlerException(UserException e,HttpServletRequest request) {
 		request.setAttribute("e",e);
@@ -127,7 +127,7 @@ public class UserController {
 				
 	}
 	//登陆方法
-	
+*/	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(@RequestParam String userName,@RequestParam String password,HttpSession session) {
 		

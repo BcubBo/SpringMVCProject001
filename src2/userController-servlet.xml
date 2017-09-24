@@ -28,4 +28,11 @@
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	<bean class="org.springframework.web.portlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="exception/UserException.java">error</prop>
+			</props>
+		</property>
+	</bean>
 </beans>
