@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import exception.UserException;
@@ -75,11 +79,24 @@ public class UserController {
 		return "user/add";
 	}
 	@RequestMapping(value="/addsave",method=RequestMethod.POST)
-	public String addSave(@Validated User user,BindingResult bindingResult) {
+	public String addSave(@Validated User user,BindingResult bindingResult,
+			MultipartFile attach,HttpServletRequest request) {
+		
+		String filePath  = request.getSession().getServletContext().getRealPath("/statics/upload");
+		//存在操作系统分隔符的问题
+		logger.info("上传附件后输出结果为:"+attach.getOriginalFilename()+"\t"+"标签名称为:"+attach.getName());
 		if(bindingResult.hasErrors()) {
 			return "user/add";
 		}else {
 			userList.put(user.getId(),user);
+			if(!attach.isEmpty()) {
+				File saveFile = new File(filePath+File.separator+attach.getOriginalFilename());
+				try {
+					FileUtils.copyInputStreamToFile(attach.getInputStream(),saveFile);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 			
 			//return "user/userlist";//服务器端行为
 			

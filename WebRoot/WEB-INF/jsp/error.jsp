@@ -8,7 +8,7 @@
 <script type="text/javascript">
 	function erroJump(){
 
-		var jump = setTimeout(function(){window.location.href="${pageContext.getRequest().getContextPath()}"},1000);
+		var jump = setTimeout(function(){window.location.href="${pageContext.getRequest().getContextPath()}"},3000);
 	}
 	window.onload=erroJump();
 </script>
@@ -17,6 +17,6 @@
 <body style="background-color:grey">
 <h3 style="color:gold">${exception.message }</h3>
 <h3 style="color:gold">配置了全局异常之后</h3>
-<h3>将跳转到登陆界面</h3>
+<h3>三秒后将跳转到登陆界面</h3>
 </body>
 </html>

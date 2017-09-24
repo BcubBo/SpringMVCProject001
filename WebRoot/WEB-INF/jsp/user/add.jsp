@@ -5,16 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="<%=request.getContextPath() %>/statics/css/main.css" rel="stylesheet"/>
 <title>add页面</title>
 </head>
 <body>
 <!-- 不指定action，那么请求提交到add -->
-<sfm:form modelAttribute="user" method="post" action="addsave">
-	ID:<sfm:input path="id"/><br/>
-	userName:<sfm:input path="userName"/><sfm:errors path="userName"/><br/>
-	password:<sfm:input path="password"/><sfm:errors path="password"/><br/>
-	email:<sfm:input path="email"/><br/><sfm:errors path="email"/>
-	<input type="submit" value="上传"/>
+<table>
+<sfm:form modelAttribute="user" method="post" action="addsave" enctype="multipart/form-data">
+	
+	<tr><td>ID:</td><td><sfm:input path="id" cssStyle="background-color:lightgrey"/></td></tr>
+	<tr><td>userName:</td><td><sfm:input path="userName" cssStyle="background-color:lightgrey"/></td><td><sfm:errors path="userName"/></td></tr>
+	<tr><td>password:</td><td><sfm:input path="password" cssStyle="background-color:lightgrey"/></td><td><sfm:errors path="password"/></td></tr>
+	<tr><td>email:</td><td><sfm:input path="email" cssStyle="background-color:lightgrey"/></td><td><sfm:errors path="email"/></td></tr>
+	<tr><td>attach:</td><td><input type="file" name="attach" /></td></tr>
+	<tr><td><input type="submit" value="上传"/></td></tr>
+	
 </sfm:form>
+</table>
 </body>
 </html>
