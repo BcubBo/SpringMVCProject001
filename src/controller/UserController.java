@@ -180,7 +180,7 @@ public class UserController {
 	@ResponseBody //ajax
 	public User view(@PathVariable String id) {
 		
-		//JSONObject jo =JSONObject.formObejct("String");
+		//JSONObject jo =JSONObject.fromObejct("String");
 		//User user = (User)JSONOBject.toBean(jo,User.class);
 		return userList.get(id);
 		//返回对象
