@@ -145,11 +145,13 @@ public class UserController {
 			}
 		}
 		if(!flag) {
-			throw new UserException("用户名密码不正确请重新输入");
+				throw new UserException("用户名密码不正确请重新输入");
+			//将异常信息放入session中
 		}
 		return "redirect:/user/list";
 		
 	}
 	//
+
 	
 }
